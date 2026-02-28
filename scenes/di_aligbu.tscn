@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://5s6a37k732sh"]
+
+[ext_resource type="Script" uid="uid://dukpjop64giwt" path="res://di_aligbu.gd" id="1_r28lh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pdgy"]
+
+[node name="diALIGBU" type="Node2D" unique_id=1502663735]
+position = Vector2(1, 0)
+script = ExtResource("1_r28lh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=424961683]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2036166810]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_8pdgy")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=340347695]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1612407980]
+visible = false
+anchors_preset = -1
+offset_left = 9.0
+offset_top = 132.0
+offset_right = 474.0
+offset_bottom = 237.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=1693600881]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 17.0
+offset_right = 453.0
+offset_bottom = 94.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

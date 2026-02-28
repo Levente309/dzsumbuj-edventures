@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c3bbasohq8s5h"]
+
+[ext_resource type="Script" uid="uid://d14uf3ho5a22k" path="res://zöldgenyó.gd" id="1_byxbe"]
+[ext_resource type="Texture2D" uid="uid://c0tn5ypsbc031" path="res://assets/images/zöldgenyó/zöld genyó.png" id="1_xuof1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_byxbe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xuof1")
+}],
+"loop": true,
+"name": &"running",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yghey"]
+size = Vector2(29.625, 31.25)
+
+[node name="zöldgenyó" type="Area2D" unique_id=1045361777]
+position = Vector2(20, -2)
+script = ExtResource("1_byxbe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1374504447]
+texture_filter = 1
+scale = Vector2(0.59375, 0.546875)
+sprite_frames = SubResource("SpriteFrames_byxbe")
+animation = &"running"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=729812791]
+texture_filter = 1
+shape = SubResource("RectangleShape2D_yghey")
+
+[node name="Timer" type="Timer" parent="." unique_id=1192172100]
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

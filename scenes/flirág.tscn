@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bdp8r1pxrh0c"]
+
+[ext_resource type="Script" uid="uid://c8kybnrsd8i0h" path="res://scripts/flirág.gd" id="1_70s27"]
+[ext_resource type="Texture2D" uid="uid://bvsdfl46wpwvg" path="res://assets/images/collectables/flirág.png" id="1_jbtp4"]
+[ext_resource type="Texture2D" uid="uid://bmj7k77fdq8ce" path="res://assets/images/collectables/virág.png" id="2_dyyn1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghhya"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dyyn1")
+}],
+"loop": true,
+"name": &"collected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jbtp4")
+}],
+"loop": true,
+"name": &"flirág",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70s27"]
+radius = 11.0
+height = 22.0
+
+[node name="flirág" type="Area2D" unique_id=1673385926]
+position = Vector2(46, 116)
+script = ExtResource("1_70s27")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=562108964]
+texture_filter = 1
+position = Vector2(58, 8)
+scale = Vector2(0.32031253, 0.25)
+sprite_frames = SubResource("SpriteFrames_ghhya")
+animation = &"collected"
+autoplay = "flirág"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1542732331]
+position = Vector2(57, 8)
+shape = SubResource("CapsuleShape2D_70s27")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
